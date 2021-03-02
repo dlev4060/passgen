@@ -24,6 +24,12 @@ private slots:
 
     void on_AcronymGenerationRB_clicked();
 
+    void on_lowercaseGeneration_clicked();
+
+    void on_uppercaseSymbolsRB_clicked();
+
+    void on_defaultGenerationRB_clicked();
+
 private:
     Ui::PasswordGenerator *ui;
 };
