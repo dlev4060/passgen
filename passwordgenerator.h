@@ -30,6 +30,8 @@ private slots:
 
     void on_defaultGenerationRB_clicked();
 
+    void on_clearOutputBtn_clicked();
+
 private:
     Ui::PasswordGenerator *ui;
 };

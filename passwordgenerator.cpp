@@ -91,3 +91,8 @@ void PasswordGenerator::on_defaultGenerationRB_clicked()
     lowercase = false;
     uppercase = false;
 }
+
+void PasswordGenerator::on_clearOutputBtn_clicked()
+{
+    ui->OutputTB->clear();
+}
