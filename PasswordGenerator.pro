@@ -10,13 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     Generator.cpp \
+    dialogisempty.cpp \
     main.cpp \
     passwordgenerator.cpp
 
 HEADERS += \
+    dialogisempty.h \
     passwordgenerator.h
 
 FORMS += \
+    dialogisempty.ui \
     passwordgenerator.ui
 
 TRANSLATIONS += \

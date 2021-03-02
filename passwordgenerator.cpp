@@ -1,6 +1,7 @@
 #include "passwordgenerator.h"
 #include "ui_passwordgenerator.h"
 #include "Generator.cpp"
+#include "dialogisempty.h"
 
 PasswordGenerator::PasswordGenerator(QWidget *parent)
     : QMainWindow(parent)
@@ -23,6 +24,12 @@ void PasswordGenerator::on_GenerateBtn_clicked()
     if (ui->OutputTB->toPlainText().length() > 0) ui->OutputTB->clear();
 
     if (ui->AcronymGenerationRB->isChecked()) {
+        if (!(ui->acronymTextInput->toPlainText() > 0)) {
+            DialogIsEmpty emptyDlg;
+            emptyDlg.exec();
+            return;
+        }
+
         QString text = ui->acronymTextInput->toPlainText();
         QStringList words = text.split(' ');
         QString acrSymbols;
