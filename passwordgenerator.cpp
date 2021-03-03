@@ -31,7 +31,7 @@ void PasswordGenerator::on_GenerateBtn_clicked()
         }
 
         QString text = ui->acronymTextInput->toPlainText();
-        QStringList words = text.split(' ');
+        QStringList words = text.replace('\n', ' ').split(' ');
         QString acrSymbols;
 
         for (int i = 0; i <= words.length() - 1; i++) {
