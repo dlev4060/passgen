@@ -63,6 +63,8 @@ void PasswordGenerator::on_GenerateBtn_clicked()
 
         ui->OutputTB->insertPlainText(outputData);
     }
+
+    if (ui->OutputTB->toPlainText().length() > 0) ui->saveToFileBtn->setEnabled(true);
 }
 
 void PasswordGenerator::on_DefaultGenerationRB_clicked()
@@ -103,6 +105,7 @@ void PasswordGenerator::on_defaultGenerationRB_clicked()
 void PasswordGenerator::on_clearOutputBtn_clicked()
 {
     ui->OutputTB->clear();
+    ui->saveToFileBtn->setDisabled(true);
 }
 
 void PasswordGenerator::on_clearInputBtn_clicked()

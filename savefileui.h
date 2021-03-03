@@ -20,10 +20,13 @@ public:
     }
 
 private slots:
-    void on_buttonBox_accepted();
+    void on_saveBtn_clicked();
 
-    void on_buttonBox_rejected();
+    void on_cancelBtn_clicked();
 
+    void on_webSiteLE_textEdited(const QString &arg1);
+
+    void on_loginLE_textEdited(const QString &arg1);
 
 private:
     Ui::SaveFileUI *ui;
