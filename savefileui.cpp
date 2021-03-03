@@ -15,29 +15,6 @@ SaveFileUI::~SaveFileUI()
 }
 
 
-/*void SaveFileUI::on_buttonBox_accepted()
-{
-    if (!(ui->webSiteLE->text().length() > 0 || !(ui->loginLE->text().length() > 0))) {
-
-    }
-
-    saveFile(
-            ui->webSiteLE->text(),
-            ui->loginLE->text(),
-            password.toUtf8().constData()
-    );
-    //const char* lol = password.toStdString().c_str();
-
-    printf("%s\n", password.toUtf8().constData());
-
-    accept();
-}
-
-void SaveFileUI::on_buttonBox_rejected()
-{
-    reject();
-}*/
-
 void SaveFileUI::on_saveBtn_clicked()
 {
     saveFile(
@@ -45,8 +22,6 @@ void SaveFileUI::on_saveBtn_clicked()
             ui->loginLE->text(),
             password.toUtf8().constData()
     );
-
-    printf("%s\n", password.toUtf8().constData());
 
     accept();
 }
