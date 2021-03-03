@@ -2,6 +2,7 @@
 #include "ui_passwordgenerator.h"
 #include "generator.h"
 #include "dialogisempty.h"
+#include "savefileui.h"
 
 PasswordGenerator::PasswordGenerator(QWidget *parent)
     : QMainWindow(parent)
@@ -107,4 +108,12 @@ void PasswordGenerator::on_clearOutputBtn_clicked()
 void PasswordGenerator::on_clearInputBtn_clicked()
 {
     ui->acronymTextInput->clear();
+}
+
+void PasswordGenerator::on_saveToFileBtn_clicked()
+{
+    SaveFileUI *saveFile = new SaveFileUI();
+    QList password = ui->OutputTB->toPlainText().split(' ');
+    saveFile->setPassword(password[2]);
+    saveFile->exec();
 }

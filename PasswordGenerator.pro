@@ -2,7 +2,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -11,16 +11,21 @@ CONFIG += c++11
 SOURCES += \
     dialogisempty.cpp \
     main.cpp \
-    passwordgenerator.cpp
+    passwordgenerator.cpp \
+    savefile.cpp \
+    savefileui.cpp
 
 HEADERS += \
     dialogisempty.h \
     passwordgenerator.h \
-    generator.h
+    generator.h \
+    savefile.h \
+    savefileui.h
 
 FORMS += \
     dialogisempty.ui \
-    passwordgenerator.ui
+    passwordgenerator.ui \
+    savefileui.ui
 
 TRANSLATIONS += \
     PasswordGenerator_en_US.ts

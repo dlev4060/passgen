@@ -34,6 +34,8 @@ private slots:
 
     void on_clearInputBtn_clicked();
 
+    void on_saveToFileBtn_clicked();
+
 private:
     Ui::PasswordGenerator *ui;
 };
