@@ -1,6 +1,6 @@
 #include "passwordgenerator.h"
 #include "ui_passwordgenerator.h"
-#include "Generator.cpp"
+#include "generator.h"
 #include "dialogisempty.h"
 
 PasswordGenerator::PasswordGenerator(QWidget *parent)
@@ -41,7 +41,7 @@ void PasswordGenerator::on_GenerateBtn_clicked()
         }
 
         if (lowercase) outputData = "Generated password: " + acrSymbols.toLower();
-        if (uppercase) outputData = "Generated password: " + acrSymbols.toUpper();
+        else if (uppercase) outputData = "Generated password: " + acrSymbols.toUpper();
         else outputData = "Generated password: " + acrSymbols;
 
         ui->OutputTB->insertPlainText(outputData);
@@ -102,4 +102,9 @@ void PasswordGenerator::on_defaultGenerationRB_clicked()
 void PasswordGenerator::on_clearOutputBtn_clicked()
 {
     ui->OutputTB->clear();
+}
+
+void PasswordGenerator::on_clearInputBtn_clicked()
+{
+    ui->acronymTextInput->clear();
 }
