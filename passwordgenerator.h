@@ -36,6 +36,12 @@ private slots:
 
     void on_saveToFileBtn_clicked();
 
+    void on_acronymTextInput_textChanged();
+
+    void on_OutputTB_textChanged();
+
+    void on_readSavePass_clicked();
+
 private:
     Ui::PasswordGenerator *ui;
 };

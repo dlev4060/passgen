@@ -3,6 +3,8 @@
 #include "generator.h"
 #include "dialogisempty.h"
 #include "savefileui.h"
+#include <QFileDialog>
+#include "savedpassword.h"
 
 PasswordGenerator::PasswordGenerator(QWidget *parent)
     : QMainWindow(parent)
@@ -119,4 +121,22 @@ void PasswordGenerator::on_saveToFileBtn_clicked()
     QList password = ui->OutputTB->toPlainText().split(' ');
     saveFile->setPassword(password[2]);
     saveFile->exec();
+}
+
+void PasswordGenerator::on_acronymTextInput_textChanged()
+{
+    if (!(ui->acronymTextInput->toPlainText().length() > 0)) ui->clearInputBtn->setDisabled(true);
+    else ui->clearInputBtn->setEnabled(true);
+}
+
+void PasswordGenerator::on_OutputTB_textChanged()
+{
+    if (!(ui->OutputTB->toPlainText().length() > 0)) ui->clearOutputBtn->setDisabled(true);
+    else ui->clearOutputBtn->setEnabled(true);
+}
+
+void PasswordGenerator::on_readSavePass_clicked()
+{
+    SavedPassword *saved = new SavedPassword();
+    saved->exec();
 }

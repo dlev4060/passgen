@@ -12,6 +12,7 @@ SOURCES += \
     dialogisempty.cpp \
     main.cpp \
     passwordgenerator.cpp \
+    savedpassword.cpp \
     savefile.cpp \
     savefileui.cpp
 
@@ -19,12 +20,14 @@ HEADERS += \
     dialogisempty.h \
     passwordgenerator.h \
     generator.h \
+    savedpassword.h \
     savefile.h \
     savefileui.h
 
 FORMS += \
     dialogisempty.ui \
     passwordgenerator.ui \
+    savedpassword.ui \
     savefileui.ui
 
 TRANSLATIONS += \

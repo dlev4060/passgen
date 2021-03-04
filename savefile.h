@@ -19,13 +19,25 @@ public:
 
     const QString path = "Saved/";
 
+    static std::string encryptDecrypt(std::string toEncrypt) {
+        char key[3] = {'R', 'P', 'G'}; //Any chars will work, in an array of any size
+        std::string output = toEncrypt;
+
+        for (int i = 0; i < toEncrypt.size(); i++)
+            output[i] = toEncrypt[i] ^ key[i % (sizeof(key) / sizeof(char))];
+
+        return output;
+    }
+
     void Save() {
         if (!QDir().cd(path)) QDir().mkdir(path);
 
-        QString data = "webSiteName> " + webSiteName + ";\nlogin> " + login + ";\npassword> " + password + ";";
+        QString data = "webSiteName> " + webSiteName + "\nlogin> " + login + "\npassword> " + password;
+
+        std::cout << "Saving data: " << data.toUtf8().constData() << std::endl;
 
         std::ofstream outfile (fName.toUtf8().constData());
-        outfile << data.toUtf8().constData() << std::endl;
+        outfile << encryptDecrypt(data.toUtf8().constData()) << std::endl;
         outfile.close();
     }
 private:
