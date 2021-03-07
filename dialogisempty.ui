@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>WARNING!</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/new/icons/resources/icons/warn_ico.png</normaloff>:/new/icons/resources/icons/warn_ico.png</iconset>
+  </property>
   <property name="modal">
    <bool>true</bool>
   </property>
@@ -52,6 +56,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

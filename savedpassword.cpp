@@ -29,6 +29,8 @@ void SavedPassword::on_pushButton_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "/Saved/", tr("Data files (*.sec)"));
 
+    if (fileName == NULL) return;
+
     ui->selectedFileName->setText(fileName);
 
     QString data = "";

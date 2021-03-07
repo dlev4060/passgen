@@ -16,6 +16,10 @@
   <property name="windowTitle">
    <string>Saving password</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/new/icons/resources/icons/save_ico.png</normaloff>:/new/icons/resources/icons/save_ico.png</iconset>
+  </property>
   <widget class="QLineEdit" name="webSiteLE">
    <property name="geometry">
     <rect>
@@ -92,6 +96,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

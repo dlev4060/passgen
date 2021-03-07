@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/new/icons" lang="eng">
+        <file>resources/icons/main_window_ico.png</file>
+        <file>resources/icons/save_ico.png</file>
+        <file>resources/icons/warn_ico.png</file>
+    </qresource>
+</RCC>

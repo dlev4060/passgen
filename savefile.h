@@ -30,7 +30,10 @@ public:
     }
 
     void Save() {
-        if (!QDir().cd(path)) QDir().mkdir(path);
+        if (!QDir().cd(path)) {
+            QDir().mkdir(path);
+            QDir().cd(path);
+        }
 
         QString data = "webSiteName> " + webSiteName + "\nlogin> " + login + "\npassword> " + password;
 
@@ -41,8 +44,6 @@ public:
         outfile.close();
     }
 private:
-    QDir pathDir = QDir(path);
-
     QString fName;
     QString webSiteName;
     QString login;
