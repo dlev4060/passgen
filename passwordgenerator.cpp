@@ -18,10 +18,6 @@ PasswordGenerator::~PasswordGenerator()
     delete ui;
 }
 
-bool lowercase = false;
-bool uppercase = false;
-QString outputData;
-
 void PasswordGenerator::on_GenerateBtn_clicked()
 {
     if (ui->OutputTB->toPlainText().length() > 0) ui->OutputTB->clear();
@@ -43,9 +39,7 @@ void PasswordGenerator::on_GenerateBtn_clicked()
             acrSymbols.append(nextChar);
         }
 
-        if (lowercase) outputData = "Generated password: " + acrSymbols.toLower();
-        else if (uppercase) outputData = "Generated password: " + acrSymbols.toUpper();
-        else outputData = "Generated password: " + acrSymbols;
+        QString outputData = "Generated password: " + acrSymbols;
 
         ui->OutputTB->insertPlainText(outputData);
     }
@@ -59,9 +53,7 @@ void PasswordGenerator::on_GenerateBtn_clicked()
 
         QString result = GeneratePassword(lenght, symbols);
 
-        if (lowercase) outputData = "Generated password: " + result.toLower();
-        else if (uppercase) outputData = "Generated password: " + result.toUpper();
-        else outputData = "Generated password: " + result;
+        QString outputData = "Generated password: " + result;
 
         ui->OutputTB->insertPlainText(outputData);
     }
@@ -85,23 +77,6 @@ void PasswordGenerator::on_AcronymGenerationRB_clicked()
         ui->specSymbols->setDisabled(true);
         ui->lenghtLB->setDisabled(true);
     }
-}
-
-void PasswordGenerator::on_lowercaseGeneration_clicked()
-{
-    lowercase = true;
-}
-
-void PasswordGenerator::on_uppercaseSymbolsRB_clicked()
-{
-    lowercase = false;
-    uppercase = true;
-}
-
-void PasswordGenerator::on_defaultGenerationRB_clicked()
-{
-    lowercase = false;
-    uppercase = false;
 }
 
 void PasswordGenerator::on_clearOutputBtn_clicked()

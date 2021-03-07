@@ -24,12 +24,6 @@ private slots:
 
     void on_AcronymGenerationRB_clicked();
 
-    void on_lowercaseGeneration_clicked();
-
-    void on_uppercaseSymbolsRB_clicked();
-
-    void on_defaultGenerationRB_clicked();
-
     void on_clearOutputBtn_clicked();
 
     void on_clearInputBtn_clicked();
