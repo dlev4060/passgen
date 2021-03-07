@@ -5,17 +5,40 @@
 #include "savefileui.h"
 #include <QFileDialog>
 #include "savedpassword.h"
+#include "passwordrequipments.h"
+
+QString sustainability(std::string password);
 
 PasswordGenerator::PasswordGenerator(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::PasswordGenerator)
 {
     ui->setupUi(this);
+    connect(this, &PasswordGenerator::on_PasswordGenerated, this, &PasswordGenerator::on_PasswordGeneratedSlot);
 }
 
 PasswordGenerator::~PasswordGenerator()
 {
     delete ui;
+}
+
+void PasswordGenerator::on_PasswordGeneratedSlot(QString password) {
+    if (password == "weak") {
+        ui->sustainabilityLabel->setText("Weak password");
+        ui->sustainabilityLabel->setStyleSheet("font-size: 20px; color: red");
+    }
+    else if (password == "middle") {
+        ui->sustainabilityLabel->setText("Middle password");
+        ui->sustainabilityLabel->setStyleSheet("font-size: 20px; color: Gold");
+    }
+    else if (password == "strong") {
+        ui->sustainabilityLabel->setText("Strong password");
+        ui->sustainabilityLabel->setStyleSheet("font-size: 20px; color: LightGreen");
+    }
+    else if (password == "very_strong") {
+        ui->sustainabilityLabel->setText("Very strong password");
+        ui->sustainabilityLabel->setStyleSheet("font-size: 20px; color: Green");
+    }
 }
 
 void PasswordGenerator::on_GenerateBtn_clicked()
@@ -42,6 +65,9 @@ void PasswordGenerator::on_GenerateBtn_clicked()
         QString outputData = "Generated password: " + acrSymbols;
 
         ui->OutputTB->insertPlainText(outputData);
+
+        QString sustainabilityPassword = sustainability(acrSymbols.toUtf8().constData());
+        emit on_PasswordGenerated(sustainabilityPassword);
     }
 
     if (ui->DefaultGenerationRB->isChecked()) {
@@ -56,9 +82,12 @@ void PasswordGenerator::on_GenerateBtn_clicked()
         QString outputData = "Generated password: " + result;
 
         ui->OutputTB->insertPlainText(outputData);
+
+        QString sustainabilityPassword = sustainability(result.toUtf8().constData());
+        emit on_PasswordGenerated(sustainabilityPassword);
     }
 
-    if (ui->OutputTB->toPlainText().length() > 0) ui->saveToFileBtn->setEnabled(true);
+    if (ui->OutputTB->toPlainText().length() > 0) ui->actionSave_password->setEnabled(true);
 }
 
 void PasswordGenerator::on_DefaultGenerationRB_clicked()
@@ -82,20 +111,12 @@ void PasswordGenerator::on_AcronymGenerationRB_clicked()
 void PasswordGenerator::on_clearOutputBtn_clicked()
 {
     ui->OutputTB->clear();
-    ui->saveToFileBtn->setDisabled(true);
+    ui->actionSave_password->setDisabled(true);
 }
 
 void PasswordGenerator::on_clearInputBtn_clicked()
 {
     ui->acronymTextInput->clear();
-}
-
-void PasswordGenerator::on_saveToFileBtn_clicked()
-{
-    SaveFileUI *saveFile = new SaveFileUI();
-    QList password = ui->OutputTB->toPlainText().split(' ');
-    saveFile->setPassword(password[2]);
-    saveFile->exec();
 }
 
 void PasswordGenerator::on_acronymTextInput_textChanged()
@@ -110,7 +131,15 @@ void PasswordGenerator::on_OutputTB_textChanged()
     else ui->clearOutputBtn->setEnabled(true);
 }
 
-void PasswordGenerator::on_readSavePass_clicked()
+void PasswordGenerator::on_actionSave_password_triggered()
+{
+    SaveFileUI *saveFile = new SaveFileUI();
+    QList password = ui->OutputTB->toPlainText().split(' ');
+    saveFile->setPassword(password[2]);
+    saveFile->exec();
+}
+
+void PasswordGenerator::on_actionRead_saved_password_triggered()
 {
     SavedPassword *saved = new SavedPassword();
     saved->exec();

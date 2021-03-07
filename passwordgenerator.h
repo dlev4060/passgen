@@ -28,13 +28,18 @@ private slots:
 
     void on_clearInputBtn_clicked();
 
-    void on_saveToFileBtn_clicked();
-
     void on_acronymTextInput_textChanged();
 
     void on_OutputTB_textChanged();
 
-    void on_readSavePass_clicked();
+    void on_actionSave_password_triggered();
+
+    void on_actionRead_saved_password_triggered();
+
+    void on_PasswordGeneratedSlot(QString password);
+
+signals:
+    void on_PasswordGenerated(QString password);
 
 private:
     Ui::PasswordGenerator *ui;
