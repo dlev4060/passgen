@@ -23,7 +23,7 @@ public:
         char key[3] = {'R', 'P', 'G'}; //Any chars will work, in an array of any size
         std::string output = toEncrypt;
 
-        for (int i = 0; i < toEncrypt.size(); i++)
+        for (unsigned int i = 0; i < toEncrypt.size() - 1; i++)
             output[i] = toEncrypt[i] ^ key[i % (sizeof(key) / sizeof(char))];
 
         return output;

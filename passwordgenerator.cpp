@@ -112,6 +112,7 @@ void PasswordGenerator::on_clearOutputBtn_clicked()
 {
     ui->OutputTB->clear();
     ui->actionSave_password->setDisabled(true);
+    ui->sustainabilityLabel->setStyleSheet("color: transparent");
 }
 
 void PasswordGenerator::on_clearInputBtn_clicked()
